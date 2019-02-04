@@ -5,7 +5,7 @@
 
     <groupId>com.fr.sciforma.etnic</groupId>
     <artifactId>apietnic</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>APIEtnic</name>
@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
+        <version>2.1.2.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -52,6 +52,24 @@
             <scope>test</scope>
         </dependency>
         
+<!--        <dependency>
+            <groupId>fr.sciforma</groupId>
+            <artifactId>PSClient</artifactId>
+            <version>etnic-5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>fr.sciforma</groupId>
+            <artifactId>PSClient_en</artifactId>
+            <version>etnic-5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>fr.sciforma</groupId>
+            <artifactId>utilities</artifactId>
+            <version>etnic-5</version>
+            <scope>provided</scope>
+        </dependency>-->
         <dependency>
             <groupId>com.sciforma</groupId>
             <artifactId>PSClient</artifactId>
@@ -86,6 +104,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>${project.name}</finalName>
     </build>
 
 </project>

@@ -34,17 +34,22 @@ public class SciformaService {
    
     private Session session;
 
-    public void createConnection() {
+    public boolean createConnection() {
 
         try {
 
+            Logger.info("Connection to " + url + " and context " + context + " with username " + username);
             session = new Session(url + "/" + context);
             session.login(username, password.toCharArray());
             Logger.info("Connection successful");
+            
+            return true;
 
         } catch (PSException e) {
             Logger.error("Failed to connect to sciforma", e);
         }
+        
+        return false;
 
     }
 
