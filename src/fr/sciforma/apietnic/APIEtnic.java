@@ -1,30 +1,52 @@
-package com.fr.sciforma.etnic;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package fr.sciforma.apietnic;
 
-import com.fr.sciforma.etnic.service.SciformaService;
 import com.sciforma.psnext.api.LockException;
 import com.sciforma.psnext.api.PSException;
 import com.sciforma.psnext.api.Project;
+import fr.sciforma.apietnic.service.SciformaService;
 import java.util.Date;
 import java.util.List;
 import org.pmw.tinylog.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-public class Application implements CommandLineRunner {
+/**
+ *
+ * @author mehdi
+ */
+@ComponentScan(basePackages = "fr.sciforma")
+@Configuration
+public class APIEtnic {
 
     @Autowired
     SciformaService sciformaService;
-
+    
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        ApplicationContext context = new AnnotationConfigApplicationContext(APIEtnic.class);
+        APIEtnic api = context.getBean(APIEtnic .class);
+        
+        try {
+            
+            Logger.info("Start APIEtnic at " + new Date());
+            api.start();
+            
+        } catch (Exception ex) {
+            
+            Logger.error("An error occured during execution", ex);
+            
+        }
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-
+    private void start() throws Exception {
+        
         if (sciformaService.createConnection()) {
 
             Date now = new Date();
@@ -71,6 +93,6 @@ public class Application implements CommandLineRunner {
             sciformaService.closeConnection();
 
         }
-
     }
+    
 }

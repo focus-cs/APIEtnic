@@ -1,3 +1,6 @@
 /apietnic/target/
 /BasicSpringbootProject/target/
 /target/
+/build/
+/dist/
+/nbproject/private/

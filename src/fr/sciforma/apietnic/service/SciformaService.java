@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fr.sciforma.etnic.service;
+package fr.sciforma.apietnic.service;
 
 import com.sciforma.psnext.api.PSException;
 import com.sciforma.psnext.api.Project;
@@ -13,14 +13,16 @@ import java.util.List;
 import lombok.Getter;
 import org.pmw.tinylog.Logger;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  *
  * @author mehdi
  */
 @Getter
-@Service
+@Configuration
+@PropertySource("file:${user.dir}/config/application.properties")
 public class SciformaService {
     
     @Value("${url}")
@@ -38,7 +40,7 @@ public class SciformaService {
 
         try {
 
-            Logger.info("Connection to " + url + " and context " + context + " with username " + username);
+            Logger.info("Connection to " + url + "/" + context + " with username " + username);
             session = new Session(url + "/" + context);
             session.login(username, password.toCharArray());
             Logger.info("Connection successful");
@@ -46,7 +48,7 @@ public class SciformaService {
             return true;
 
         } catch (PSException e) {
-            Logger.error("Failed to connect to sciforma", e);
+            Logger.error("Failed to connect to sciforma : " + e.getMessage() , e);
         }
         
         return false;
