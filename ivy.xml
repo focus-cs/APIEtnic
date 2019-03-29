@@ -1,0 +1,13 @@
+<ivy-module version="2.0">
+    <info organisation="fr.sciforma" module="apietnic" />
+    <dependencies>
+        <dependency org="org.springframework" name="spring-core" rev="5.1.5.RELEASE"/>
+        <dependency org="org.springframework" name="spring-beans" rev="5.1.5.RELEASE"/>
+        <dependency org="org.springframework" name="spring-context" rev="5.1.5.RELEASE"/>
+        <dependency org="org.springframework" name="spring-aop" rev="5.1.5.RELEASE"/>
+        <dependency org="org.springframework" name="spring-expression" rev="5.1.5.RELEASE"/>
+        <dependency org="joda-time" name="joda-time" rev="2.5"  />
+        <dependency org="org.projectlombok" name="lombok" rev="1.18.6"/>
+        <dependency org="org.tinylog" name="tinylog" rev="1.3.6"/>
+    </dependencies>
+</ivy-module>

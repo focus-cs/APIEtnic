@@ -24,14 +24,14 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource("file:${user.dir}/config/application.properties")
 public class SciformaService {
-    
-    @Value("${url}")
+
+    @Value("${sciforma.url}")
     private String url;
-    @Value("${context}")
+    @Value("${sciforma.context}")
     private String context;
-    @Value("${username}")
+    @Value("${sciforma.username}")
     private String username;
-    @Value("${password}")
+    @Value("${sciforma.password}")
     private String password;
    
     private Session session;
